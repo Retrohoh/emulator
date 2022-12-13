@@ -1,0 +1,21 @@
+---
+  version: "2.1"
+  services:
+    emulatorjs:
+      image: re1r0h/emulator:latest
+      #image: lscr.io/linuxserver/emulatorjs:latest #base image
+      container_name: emulator
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=America/Colombus
+        #- SUBFOLDER=/ #optional
+      volumes:
+        - /home/maanav0114/emulator/config:/config
+        - /home/maanav0114/emulator/nds:/data/nds/roms
+        - /home/maanav0114/emulator/n64:/data/n64/roms
+      ports:
+        - 3020:3000
+        - 4020:80
+        #- 4001:4001 #optional
+      restart: unless-stopped
